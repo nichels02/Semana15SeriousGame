@@ -22,13 +22,12 @@ public class PruebaSumaDeRotacion : MonoBehaviour
 
         quaternionHijoI = HijoI.rotation;
         quaternionHijoD = HijoD.rotation;
-        Padre.rotation = quaternionHijoD * quaternionHijoI;
 
         Vector3 x = Padre.rotation.eulerAngles;
-        .x = x.x >= 180 && x.x <= 50 ?  50 : x.x <= 180 && x.x >= 310 ? 310 : x.x ;
-        x.z = x.z >= 180 && x.z <= 50 ?  50 : x.z <= 180 && x.z >= 310 ? 310 : x.z ;
-        x.z = x.z <= 50 ?  x.z : 50;
-        Vector3 x = Padre.rotation.eulerAngles;
+        //pone un limite en la rotacion del eje x de 50 a -50
+        x.x = x.x <= 180 && x.x >= 50 ?  50 : x.x >= 180 && x.x <= 310 ? 310 : x.x ;
+        //pone un limite en la rotacion del eje z de 50 a -50
+        x.z = x.z <= 180 && x.z >= 50 ?  50 : x.z >= 180 && x.z <= 310 ? 310 : x.z ;
 
         Padre.rotation = Padre.rotation.eulerAngles != x ? Quaternion.Euler(x) : Padre.rotation;
 
