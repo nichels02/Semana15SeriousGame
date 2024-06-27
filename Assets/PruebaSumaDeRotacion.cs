@@ -8,6 +8,7 @@ public class PruebaSumaDeRotacion : MonoBehaviour
     [SerializeField] Transform HijoI; 
     [SerializeField] Transform HijoD;
     [SerializeField] Transform Hijo3;
+    [SerializeField] float velocidad;
     Quaternion quaternionHijoI;
     Quaternion quaternionHijoD;
     // Start is called before the first frame update
@@ -19,7 +20,34 @@ public class PruebaSumaDeRotacion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.A))
+        {
+            Vector3 V = Padre.rotation.eulerAngles;
+            V.x += velocidad * Time.deltaTime;
+            Padre.rotation = Quaternion.Euler(V);
 
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            Vector3 V = Padre.rotation.eulerAngles;
+            V.x -= velocidad * Time.deltaTime;
+            Padre.rotation = Quaternion.Euler(V);
+
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            Vector3 V = Padre.rotation.eulerAngles;
+            V.z += velocidad * Time.deltaTime;
+            Padre.rotation = Quaternion.Euler(V);
+
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            Vector3 V = Padre.rotation.eulerAngles;
+            V.z -= velocidad * Time.deltaTime;
+            Padre.rotation = Quaternion.Euler(V);
+
+        }
         quaternionHijoI = HijoI.rotation;
         quaternionHijoD = HijoD.rotation;
 
